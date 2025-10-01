@@ -45,7 +45,7 @@ header {
   background-color: var(--secondary-bg);
   padding: 15px 40px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   position: sticky;
   top: 0;
@@ -54,14 +54,18 @@ header {
 }
 
 header h1 {
-  margin: 0;
+  margin-right: auto;
   font-size: 1.8em;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
 }
 
 nav a {
   color: var(--text-color);
   text-decoration: none;
-  margin: 0 15px;
   font-weight: bold;
   transition: color 0.3s ease;
 }
@@ -82,7 +86,7 @@ main {
   display: flex;
   gap: 20px;
   margin-top: 20px;
-  align-items: flex-start; /* Membuat aside dan content sejajar di atas */
+  align-items: flex-start;
 }
 
 #content {
@@ -94,8 +98,8 @@ main {
 
 aside {
   flex: 1;
-  position: sticky; /* Membuat aside tetap terlihat saat di-scroll */
-  top: 100px; /* Jarak dari atas (tinggi header + margin) */
+  position: sticky;
+  top: 100px;
 }
 
 .card {
@@ -110,13 +114,11 @@ aside {
   text-align: center;
 }
 
-/* === PERUBAHAN DI SINI === */
 .game-section figure img {
   width: 100%;
-  height: 350px;         /* <-- Diperbesar dari 250px */
-  object-fit: contain;     /* <-- Diubah dari cover agar tidak terpotong */
+  height: 350px;
+  object-fit: contain;
 }
-/* === AKHIR PERUBAHAN === */
 
 .game-section figcaption {
   margin-top: 8px;
@@ -138,6 +140,11 @@ footer {
 @media (max-width: 768px) {
   header {
     padding: 15px 20px;
+    justify-content: space-between;
+  }
+
+  header h1 {
+      margin-right: 0;
   }
 
   main {
@@ -145,7 +152,7 @@ footer {
   }
   
   aside {
-    position: static; /* Menonaktifkan 'sticky' di mobile */
+    position: static;
     width: 100%;
   }
 
@@ -153,27 +160,38 @@ footer {
     display: block;
   }
 
+  /* === PERUBAHAN MENU MOBILE DI SINI === */
   #nav-links {
     display: none;
     flex-direction: column;
     position: absolute;
-    top: 65px;
-    left: 0;
+    top: 60px; /* Sedikit lebih dekat ke header */
+    right: 15px; /* Muncul dari kanan */
+    left: auto; /* Hapus properti left */
+    width: auto; /* Lebar sesuai konten */
+    min-width: 200px; /* Beri lebar minimal */
     background-color: var(--secondary-bg);
-    width: 100%;
-    text-align: center;
-    box-shadow: 0 4px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    border-radius: 8px; /* Sudut lebih halus */
+    padding: 8px 0; /* Perkecil padding atas-bawah */
+    border: 1px solid #4a4e55;
   }
-
+  
   #nav-links.active {
     display: flex;
   }
 
   #nav-links a {
-    padding: 15px;
-    border-top: 1px solid var(--primary-bg);
-    margin: 0;
+    padding: 10px 20px; /* Atur padding item menu */
+    border-top: none; /* Hapus garis pemisah atas */
+    text-align: left; /* Teks rata kiri agar rapi */
   }
+  
+  /* Beri garis pemisah di antara item, kecuali item terakhir */
+  #nav-links a:not(:last-child) {
+      border-bottom: 1px solid var(--primary-bg);
+  }
+  /* === AKHIR PERUBAHAN === */
 }
 
 /* --- CSS UNTUK ANIMASI FADE-IN SAAT SCROLL --- */
