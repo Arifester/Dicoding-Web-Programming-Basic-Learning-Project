@@ -1,84 +1,163 @@
+/* --- Variabel Warna & Font --- */
+:root {
+  --primary-bg: #222831;
+  --secondary-bg: #393E46;
+  --accent-color: #00ADB5;
+  --text-color: #EEEEEE;
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Lato', sans-serif;
+}
+
+/* --- Reset & Gaya Dasar --- */
 * {
-    box-sizing: border-box;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-  }
+body {
+  font-family: var(--font-body);
+  background-color: var(--primary-bg);
+  color: var(--text-color);
+  line-height: 1.6;
+}
 
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  color: var(--accent-color);
+  margin-bottom: 10px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* --- Header & Navigasi --- */
+header {
+  background-color: var(--secondary-bg);
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+header h1 {
+  margin: 0;
+}
+
+nav a {
+  color: var(--text-color);
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: var(--accent-color);
+}
+
+#hamburger-icon {
+  display: none; /* Sembunyikan di desktop */
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* --- Main Content Layout --- */
+main {
+  display: flex;
+  gap: 20px; /* Jarak antara article dan aside */
+}
+
+article {
+  flex: 3; /* Article lebih lebar */
+  background-color: var(--secondary-bg);
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+aside {
+  flex: 1; /* Aside lebih sempit */
+}
+
+.card {
+  background-color: var(--secondary-bg);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.game-section {
+  margin-bottom: 40px;
+}
+
+figure {
+  margin: 20px 0;
+  text-align: center;
+}
+
+figcaption {
+  margin-top: 8px;
+  font-style: italic;
+  color: #ccc;
+}
+
+/* --- Footer --- */
+footer {
+  background-color: #1a1e24;
+  color: #aaa;
+  padding: 20px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* --- Media Query untuk Tablet & Mobile (Responsif) --- */
+@media (max-width: 768px) {
   header {
-    background-color: black;
-    color: white;
     padding: 20px;
-    text-align: center;
-  }
-
-  nav {
-    display: flex;
-    justify-content: space-around;
-    background-color: #333;
-  }
-
-  nav a {
-    color: white;
-    text-decoration: none;
-    padding: 14px 20px;
-  }
-
-  nav a:hover {
-    background-color: #ddd;
-    color: black;
   }
 
   main {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 20px;
+    flex-direction: column; /* Ubah layout menjadi vertikal */
   }
 
-  article {
-    /* flex: 70%; */
-    width: 700px;
-    background-color: #f1f1f1;
-    padding: 20px;
-    margin: 10px;
+  /* Pengaturan untuk menu mobile */
+  #hamburger-icon {
+    display: block; /* Tampilkan ikon hamburger */
   }
 
-  article h2 {
-    color: #333;
-  }
-
-  article p {
-    color: #666;
-  }
-
-  aside {
-    /* flex: 30%; */
-    background-color: #f1f1f1;
-    padding: 20px;
-    margin: 10px;
-  }
-
-  aside img {
+  #nav-links {
+    display: none; /* Sembunyikan link navigasi */
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background-color: var(--secondary-bg);
     width: 100%;
-    height: auto;
-  }
-
-  footer {
-    background-color: black;
-    color: white;
-    padding: 20px;
     text-align: center;
-}
-  img {
-    display: flex;
-    flex-wrap: wrap;
-    width: 30%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
   }
 
-#asideimg {
-    display: flex;
-    flex-wrap: wrap;
-    width: 30%;
+  #nav-links.active {
+    display: flex; /* Tampilkan menu saat class 'active' ditambahkan oleh JS */
+  }
+
+  #nav-links a {
+    padding: 15px;
+    border-top: 1px solid var(--primary-bg);
+  }
 }
